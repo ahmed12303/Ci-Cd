@@ -23,6 +23,6 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
-          cd /path/to/your/project
+          cd /var/www/html/index.html
           git pull origin main
           # Add any other deployment commands here
