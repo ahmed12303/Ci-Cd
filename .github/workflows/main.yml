@@ -16,4 +16,4 @@ jobs:
       run: echo "my name is Usman" > usman.txt
 
     - name: Copy File to Local Machine
-      run: cp usman.txt /home/ci-cd
+      run: cp usman.txt /home/muhammadahmedali/ci-cd
