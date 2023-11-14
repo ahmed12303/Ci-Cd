@@ -1,4 +1,4 @@
-name: CI/CD Hello World
+name: Copy Usman.txt File
 
 on:
   push:
@@ -6,23 +6,14 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  copy-file:
+    runs-on: self-hosted
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Print Hello World
-        run: bash hello_world.sh
+    - name: Create Usman.txt File
+      run: echo "my name is Usman" > usman.txt
 
-      - name: Deploy to Ubuntu Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          script: |
-            cd /path/to/your/project
-            bash hello_world.sh
+    - name: Copy File to Local Machine
+      run: cp usman.txt /home/ci-cd
