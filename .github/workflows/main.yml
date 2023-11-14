@@ -1,5 +1,5 @@
-- name: Deploy to Ubuntu Server
-  uses: appleboy/ssh-action@master
+name: Run script on remote server
+uses: appleboy/ssh-action@master
   with:
     host: ${{ secrets.SSH_HOST }}
     username: ${{ secrets.SSH_USERNAME }}
