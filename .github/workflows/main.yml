@@ -1,4 +1,4 @@
-name: Run script on remote server
+name: CI/CD Hello World
 
 on:
   push:
@@ -6,12 +6,15 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Print Hello World
+        run: bash hello_world.sh
 
       - name: Deploy to Ubuntu Server
         uses: appleboy/ssh-action@master
@@ -21,11 +24,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            cd /Ci-Cd/.github/workflows/
-            git pull origin main
-            # Add any other deployment commands here
-          port: 22
-          timeout: 30s
-          command_timeout: 10m
-          proxy_port: 22
-          proxy_timeout: 30s
+            cd /path/to/your/project
+            bash hello_world.sh
